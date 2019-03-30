@@ -14,6 +14,7 @@ php -d memory_limit=-1 composer.phar global require hirak/prestissimo
 source ${STI_SCRIPTS_PATH}/assemble
 php composer.phar dump-autoload -o --apcu
 
+chmod -R 777 ./public
 
 # remove Newrelic Socket
 rm -rf /tmp/.newrelic.sock
