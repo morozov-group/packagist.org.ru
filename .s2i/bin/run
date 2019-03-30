@@ -17,8 +17,6 @@ source ${STI_SCRIPTS_PATH}/run &
 
 cd ${HOME}
 
-chmod -R 777 ./public
-
 while true
 do
     cd ${HOME}
