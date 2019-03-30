@@ -4,6 +4,9 @@ echo "123 Action"
 echo `pwd`;
 touch ${PHP_SYSCONF_PATH}/php.d/newrelic.ini
 
+export TZ=Europe/Moscow
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 TEMPFILE=$(mktemp)
 COMPOSER_INSTALLER="https://getcomposer.org/installer"
 curl -o $TEMPFILE $COMPOSER_INSTALLER

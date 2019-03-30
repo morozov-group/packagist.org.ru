@@ -12,12 +12,12 @@ else
     fi
 fi
 
-export TZ=Europe/Moscow
-ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 source ${STI_SCRIPTS_PATH}/run &
 
 cd ${HOME}
+
+chmos -R 777 ./public
 
 while true
 do
