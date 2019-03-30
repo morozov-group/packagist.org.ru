@@ -17,7 +17,7 @@ source ${STI_SCRIPTS_PATH}/run &
 
 cd ${HOME}
 
-chmos -R 777 ./public
+chmod -R 777 ./public
 
 while true
 do
