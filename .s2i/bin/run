@@ -12,10 +12,11 @@ else
     fi
 fi
 
-
 source ${STI_SCRIPTS_PATH}/run &
 
 cd ${HOME}
+
+export TZ=Europe/Moscow
 
 while true
 do
