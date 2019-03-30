@@ -1,0 +1,27 @@
+#!/bin/bash -e
+
+if [ -z "$NR_LICENSE" ]
+then
+    echo "Disable NewRelic"
+    echo "; No NR_LICENSE" > ${PHP_SYSCONF_PATH}/php.d/newrelic.ini
+else
+    sed -i "s#REPLACE_WITH_REAL_KEY#$NR_LICENSE#g" ${PHP_SYSCONF_PATH}/php.d/newrelic.ini
+    if [ ! -z "$NR_APP" ]
+    then
+        sed -i "s#newrelic.appname = \"PHP Application\"#newrelic.appname = \"$NR_APP\"#g" ${PHP_SYSCONF_PATH}/php.d/newrelic.ini
+    fi
+fi
+
+export TZ=Europe/Moscow
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+source ${STI_SCRIPTS_PATH}/run &
+
+cd ${HOME}
+
+while true
+do
+    cd ${HOME}
+    php bin/mirror create --no-progress;
+    sleep 60s
+done
