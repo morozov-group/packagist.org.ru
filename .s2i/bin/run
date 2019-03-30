@@ -11,9 +11,6 @@ else
         sed -i "s#newrelic.appname = \"PHP Application\"#newrelic.appname = \"$NR_APP\"#g" ${PHP_SYSCONF_PATH}/php.d/newrelic.ini
     fi
 fi
-
-source ${STI_SCRIPTS_PATH}/run &
-
 cd ${HOME}
 
 export TZ=Europe/Moscow
@@ -23,4 +20,6 @@ do
     cd ${HOME}
     php bin/mirror create --no-progress;
     sleep 60s
-done
+done &
+
+source ${STI_SCRIPTS_PATH}/run
